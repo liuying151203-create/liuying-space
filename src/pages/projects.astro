@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeader from '@/components/common/SectionHeader.astro';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
+import { projects } from '@/data/projects';
+---
+
+<BaseLayout title="Projects | Liuying Space" description="Project gallery and experiments.">
+  <section class="section-shell py-16 sm:py-20">
+    <SectionHeader title="Projects" description="A curated list of personal projects, prototypes, and experiments." />
+    <div class="mb-6 flex flex-wrap gap-2 text-sm text-slate-300">
+      <span class="rounded-full border border-white/10 px-3 py-1">All</span>
+      <span class="rounded-full border border-white/10 px-3 py-1">Frontend</span>
+      <span class="rounded-full border border-white/10 px-3 py-1">Docs</span>
+      <span class="rounded-full border border-white/10 px-3 py-1">Portfolio</span>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</BaseLayout>

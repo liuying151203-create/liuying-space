@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeader from '@/components/common/SectionHeader.astro';
+import BlogCard from '@/components/blog/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const posts = ((await getCollection('blog')) as CollectionEntry<'blog'>[])
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout title="Blog | Liuying Space" description="Articles, notes, and tutorials.">
+  <section class="section-shell py-16 sm:py-20">
+    <SectionHeader title="Blog" description="Long-form writing, updates, and learnings." />
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {posts.map((post) => <BlogCard post={post.data} href={`/blog/${post.slug}/`} />)}
+    </div>
+  </section>
+</BaseLayout>

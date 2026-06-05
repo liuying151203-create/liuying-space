@@ -1,0 +1,26 @@
+---
+import Tag from '@/components/common/Tag.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>['data'];
+  href: string;
+}
+
+const { post, href } = Astro.props;
+---
+
+<article class="glass-card rounded-3xl p-6 transition-transform duration-200 hover:-translate-y-1">
+  <a href={href} class="block space-y-4">
+    <div class="space-y-2">
+      <p class="text-sm text-slate-400">{post.category} · {post.pubDate.toLocaleDateString('zh-CN')}</p>
+      <h3 class="text-xl font-semibold text-white">{post.title}</h3>
+      <p class="text-sm leading-7 text-slate-300">{post.description}</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {post.tags.slice(0, 4).map((tag: string) => (
+        <Tag label={tag} />
+      ))}
+    </div>
+  </a>
+</article>

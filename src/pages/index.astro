@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/home/Hero.astro';
+import SectionHeader from '@/components/common/SectionHeader.astro';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
+import BlogCard from '@/components/blog/BlogCard.astro';
+import { projects } from '@/data/projects';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const blogPosts = ((await getCollection('blog')) as CollectionEntry<'blog'>[])
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
+---
+
+<BaseLayout title="Liuying Space" description="Personal portfolio, blog, and docs built with Astro.">
+  <Hero />
+
+  <section class="section-shell py-10 sm:py-16">
+    <SectionHeader title="Featured Projects" description="Selected work and experiments with reusable structure." />
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="section-shell py-10 sm:py-16">
+    <SectionHeader title="Latest Posts" description="Recent articles and notes from the blog." />
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {blogPosts.map((post) => <BlogCard post={post.data} href={`/blog/${post.slug}/`} />)}
+    </div>
+  </section>
+</BaseLayout>

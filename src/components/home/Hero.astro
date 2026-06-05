@@ -1,0 +1,33 @@
+---
+import { profile } from '@/data/profile';
+---
+
+<section class="section-shell py-16 sm:py-24">
+  <div class="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
+    <div class="space-y-6">
+      <p class="text-sm uppercase tracking-[0.3em] text-sky-300/80">Portfolio / Blog / Docs</p>
+      <h1 class="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+        {profile.name}
+      </h1>
+      <p class="max-w-2xl text-lg text-slate-300 sm:text-xl">{profile.role}</p>
+      <p class="max-w-2xl text-base leading-8 text-slate-400">{profile.summary}</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/projects/" class="rounded-full bg-sky-400 px-5 py-3 text-sm font-semibold text-slate-950">
+          View projects
+        </a>
+        <a href="/blog/" class="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white">
+          Read blog
+        </a>
+      </div>
+    </div>
+    <div class="glass-card rounded-3xl p-6 sm:p-8">
+      <div class="space-y-4">
+        <p class="text-sm uppercase tracking-[0.3em] text-sky-300/70">Now</p>
+        <p class="text-2xl font-display text-white">Static-first, content-driven, personal web presence.</p>
+        <p class="text-sm leading-7 text-slate-300">
+          This site will grow into a portfolio, a blog, and a documentation hub with reusable components.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

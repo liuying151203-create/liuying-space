@@ -1,0 +1,50 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: 8 12 20;
+  --bg-alt: 15 23 42;
+  --surface: 15 23 42;
+  --surface-strong: 30 41 59;
+  --text: 226 232 240;
+  --muted: 148 163 184;
+  --accent: 56 189 248;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased;
+  background:
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 35%),
+    linear-gradient(180deg, rgb(var(--bg)) 0%, rgb(2 6 23) 100%);
+  font-family: 'InterVariable', 'Inter', system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+}
+
+a {
+  @apply transition-colors duration-200;
+}
+
+.glass-card {
+  @apply border border-white/10 bg-white/5 shadow-glass backdrop-blur-xl;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.prose {
+  @apply prose-invert max-w-none prose-headings:font-display prose-a:text-sky-300 prose-code:font-mono prose-pre:bg-slate-900/80;
+}

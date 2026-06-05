@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+interface Heading {
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  headings?: Heading[];
+}
+
+const { title, description, headings = [] } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="section-shell py-16 sm:py-20">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
+      <article class="glass-card rounded-3xl p-6 sm:p-10">
+        <slot />
+      </article>
+      <aside class="space-y-4">
+        <div class="glass-card rounded-3xl p-5">
+          <p class="text-sm uppercase tracking-[0.3em] text-sky-300/80">TOC</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            {headings.map((heading) => (
+              <li>
+                <a href={`#${heading.slug}`} class="hover:text-white">
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
