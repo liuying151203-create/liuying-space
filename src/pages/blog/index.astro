@@ -4,6 +4,7 @@ import SectionHeader from '@/components/common/SectionHeader.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { withBase } from '@/utils/url';
 
 const posts = ((await getCollection('blog')) as CollectionEntry<'blog'>[])
   .filter((post) => !post.data.draft)
@@ -14,7 +15,7 @@ const posts = ((await getCollection('blog')) as CollectionEntry<'blog'>[])
   <section class="section-shell py-16 sm:py-20">
     <SectionHeader title="Blog" description="Long-form writing, updates, and learnings." />
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {posts.map((post) => <BlogCard post={post.data} href={`/blog/${post.slug}/`} />)}
+      {posts.map((post) => <BlogCard post={post.data} href={withBase(`/blog/${post.slug}/`)} />)}
     </div>
   </section>
 </BaseLayout>

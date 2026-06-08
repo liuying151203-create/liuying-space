@@ -1,10 +1,13 @@
 export const profile = {
   name: 'Liuying',
+  initials: 'LY',
   role: 'Frontend Developer / Builder',
   summary:
     'A personal space for writing, shipping, and documenting projects, experiments, and learning notes.',
   location: 'Based in China',
   email: 'hello@example.com',
+  avatarImage: '',
+  avatarAlt: 'Liuying avatar',
   socials: [
     {
       label: 'GitHub',

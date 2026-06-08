@@ -1,15 +1,16 @@
 ---
 import { navigation } from '@/data/navigation';
+import { withBase } from '@/utils/url';
 ---
 
 <header class="sticky top-0 z-40 border-b border-white/8 bg-slate-950/70 backdrop-blur-xl">
   <div class="section-shell flex h-16 items-center justify-between gap-4">
-    <a href="/" class="font-display text-lg font-semibold tracking-tight text-white">
+    <a href={withBase('/')} class="font-display text-lg font-semibold tracking-tight text-white">
       Liuying Space
     </a>
     <nav class="hidden items-center gap-6 md:flex">
       {navigation.map((item) => (
-        <a href={item.href} class="text-sm text-slate-300 hover:text-white">
+        <a href={withBase(item.href)} class="text-sm text-slate-300 hover:text-white">
           {item.label}
         </a>
       ))}
