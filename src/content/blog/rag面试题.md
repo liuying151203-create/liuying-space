@@ -1,4 +1,17 @@
-# RAG面试题
+---
+title: RAG 面试题小结
+description: 整理 RAG 的基础概念、工作流程、文档切割策略和 Embedding 相关面试要点。
+pubDate: 2026-06-12
+tags:
+  - rag
+  - llm
+  - interview
+category: AI Notes
+draft: false
+featured: false
+---
+
+# RAG 面试题
 
 ## 基础概念
 
@@ -30,7 +43,7 @@ Retrieval-Augmented Generation(RAG)索引增强生成
 
 整篇文章压缩成一个向量，细节信息会被平均掉
 
-### 文当切割（Chunking）策略有哪些？
+### 文档切割（Chunking）策略有哪些？
 
 chunk太大，信息太杂，缺乏细节，向量把太多语义压缩在一起，变得笼统，检索时容易召回和问题只有部分相关的内容；
 
